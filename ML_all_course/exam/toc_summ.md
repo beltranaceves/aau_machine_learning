@@ -29,7 +29,7 @@ Manfred’s topics:
 
     
 
-3. [Support Vector Machines](./1-Manfred/2-Support%20Vector%20Machines/)
+3. [Support Vector Machines](./1-Manfred/2-Support%20Vector%20Machines/) A Support Vector Machine (SVM) is a supervised machine learning algorithm used mainly for classification. It works by finding the best boundary (called a hyperplane) that separates data points from different classes while maximizing the margin between them and the closest points (called support vectors). For data that is not linearly separable, SVM can map the data into a higher-dimensional feature space and still find a separating boundary, often using kernel functions to efficiently compute similarities without explicitly performing the transformation.
 
     * [Maximum margin hyperplanes](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=21): A maximum margin hyperplane separates classes while maximizing the distance to the nearest training points. This larger margin often improves the model’s ability to generalize to new data.
 
@@ -39,7 +39,7 @@ Manfred’s topics:
 
     * [String kernels](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=25): String kernels measure similarity between text or sequence data by comparing shared substrings or patterns. They are useful in domains such as text classification and bioinformatics where inputs are symbolic sequences.
 
-4. [Graph kernels](./1-Manfred/3-Graph%20kernels/)
+4. [Graph kernels](./1-Manfred/3-Graph%20kernels/) Graph kernels are similarity functions defined on graphs that allow them to be used in machine learning algorithms such as support vector machines.
 
     * [Convolution kernels](./1-Manfred/3-Graph%20kernels/ml-F26-12.pdf#page=10): Convolution kernels compare structured objects by decomposing them into smaller parts and summing similarities across those parts. In graphs, this can mean comparing nodes, edges, paths, or substructures.
 
@@ -51,7 +51,7 @@ Manfred’s topics:
 
 Thomas' topics:
 
-1. [Learning and neural networks](./2-Thomas/1-Learning%20and%20Neaural%20networks/)
+1. [Learning and neural networks](./2-Thomas/1-Learning%20and%20Neaural%20networks/) Learning is the process of iteratively adjusting the parameters of a model using data
 
     * [Loss functions](./2-Thomas/1-Learning%20and%20Neaural%20networks/ML-2026-1.pdf#page=12): A loss function measures how far a model’s predictions are from the true targets. It provides the objective that learning algorithms try to minimize during training.
 
@@ -61,15 +61,15 @@ Thomas' topics:
 
     * [Gradient decent](./2-Thomas/1-Learning%20and%20Neaural%20networks/ML-2026-1.pdf#page=16) and [stochastic gradient descent](./2-Thomas/1-Learning%20and%20Neaural%20networks/ML-2026-1.pdf#page=60): Gradient descent updates parameters by moving them in the direction that most decreases the loss. Stochastic gradient descent uses one or a few training examples at a time, making learning faster and more scalable.
 
-2. [Probabilistic graphical models](./2-Thomas/2-Probabilistic%20graphical%20models/)
-
+2. [Probabilistic graphical models](./2-Thomas/2-Probabilistic%20graphical%20models/):
+Probabilistic graphical models are a family of methods that use acyclic graph to represent probabilistic relationships between variables, where nodes denote variables and edges encode dependencies. This representation allows complex joint distributions to be expressed compactly and enables efficient inference by exploiting conditional independence.
     * [Maximum likelihood learning](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=20): Maximum likelihood learning estimates model parameters by choosing the values that make the observed data most probable. It is a fundamental principle for fitting probabilistic models.
 
     * [The EM algorithm](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=43): The Expectation-Maximization algorithm is used when models involve hidden or missing variables. It alternates between estimating latent variables and updating parameters until convergence.
 
     * [Bayesian learning](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=56): Bayesian learning treats model parameters as random variables and updates beliefs about them using observed data. This combines prior knowledge with evidence and naturally captures uncertainty.
 
-3. [Variational inference in probabilistic models](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/) Probabilistic graphical models are a family of methods that use acyclic graph to represent probabilistic relationships between variables, where nodes denote variables and edges encode dependencies. This representation allows complex joint distributions to be expressed compactly and enables efficient inference by exploiting conditional independence.
+4. [Variational inference in probabilistic models](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/)
 
     * [Variational inference basics](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/ML-2026-4.pdf#page=6) (objective function, Evidence lower bound, mean field assumption): Variational inference approximates difficult posterior distributions with a simpler family of distributions. It does this by optimizing the ELBO, often under assumptions such as mean field independence between variables.
 
