@@ -1,0 +1,49 @@
+Loss Function , A loss function measures the error between the target values t and the network outputs o. Learning means finding weights w that minimize the average loss over the training examples: Loss = 1/N Σ loss(tᵢ; oᵢ(w)).
+
+Squared Error Loss , Squared error loss is loss(t; o) = Σᵢ(tᵢ - oᵢ)². It is often used for regression problems; especially when the output is continuous.
+
+Cross-Entropy Loss , Cross-entropy loss is loss(t; o) = -Σᵢ tᵢ log(oᵢ). It is commonly used for classification when outputs are interpreted as probabilities over classes.
+
+Log-Loss , Log-loss is loss(t; o) = -log p(t , x). It penalizes the model when it assigns low probability to the correct target. With Gaussian assumptions; log-loss becomes similar to squared error.
+
+Gradient Descent , Gradient descent is an optimization method that updates parameters in the opposite direction of the gradient: w' = w - η∇w Loss(w). The learning rate η controls the step size.
+
+Learning Rate , The learning rate η determines how large each gradient descent update is. If it is too large; learning may diverge; if it is too small; convergence can be very slow.
+
+Backpropagation , Backpropagation is an algorithm for computing derivatives of the loss with respect to network parameters using the chain rule. It propagates error information backward from the output layer to hidden layers.
+
+Chain Rule , The chain rule allows derivatives of composite functions to be computed. If z = f(g(x)); then dz/dx = dz/dg · dg/dx. Backpropagation applies this repeatedly through the network.
+
+Computational Graph , A computational graph represents a function as connected operations and intermediate variables. A forward pass computes outputs; while a backward pass computes gradients using local derivatives.
+
+Forward Pass , The forward pass computes all intermediate values and the final output of the network from the inputs. These values are needed later during backpropagation.
+
+Backward Pass , The backward pass computes gradients of the loss with respect to intermediate variables and parameters by moving backward through the computational graph.
+
+Branching Point in Backpropagation , At a branching point in a computational graph; gradients from multiple paths are summed. This happens because a variable can influence the loss through more than one downstream computation.
+
+Dynamic Programming in Backpropagation , Backpropagation uses dynamic programming because it stores and reuses intermediate derivatives instead of recomputing the same derivatives many times.
+
+Vanishing Gradients , Vanishing gradients occur when gradients become very small during backpropagation; especially through many layers. With sigmoid activations; large inputs make σ'(x) close to zero; causing gradients to shrink.
+
+Exploding Gradients , Exploding gradients occur when gradients become extremely large; often in steep regions of the cost landscape. Gradient clipping can help by limiting the gradient norm before updating parameters.
+
+Full-Batch Gradient Descent , Full-batch gradient descent computes the gradient using the entire training dataset. This gives a more accurate gradient but becomes computationally expensive as the dataset grows.
+
+Stochastic Gradient Descent; SGD , SGD approximates the full gradient using one randomly selected training example at a time. It is computationally cheaper per update but produces noisy gradient estimates.
+
+Mini-Batch Gradient Descent , Mini-batch gradient descent estimates the gradient using a small batch of B examples. It balances the efficiency of SGD with the stability of full-batch gradient descent.
+
+Batch Size , Batch size is the number of training examples used to estimate the gradient in one update. Larger batches reduce noise but give less than linear improvement because standard error decreases only with 1/√N.
+
+Why Mini-Batches Must Be Random , Mini-batches should be selected randomly and independently to give an unbiased estimate of the full gradient. This is easiest during the first pass over the data.
+
+SGD Learning Rate Schedule , Because stochastic gradients are noisy; the learning rate should often decrease over time to support convergence. In practice; learning-rate schedules or adaptive methods such as Adam are used.
+
+Momentum , Momentum accelerates gradient descent by keeping a velocity term that is an exponentially decaying average of past negative gradients. It helps when gradients are noisy or the loss surface has high curvature.
+
+Nesterov Momentum , Nesterov momentum evaluates the gradient after applying the current velocity estimate. This can improve optimization by looking ahead before making the update.
+
+Gradient Clipping , Gradient clipping limits the size of the gradient before updating parameters. It is used to prevent exploding gradients in steep regions of the loss landscape.
+
+Neural Network Learning Goal , The goal of neural network learning is to adjust weights so that the network outputs are close to the target values according to a chosen loss function.

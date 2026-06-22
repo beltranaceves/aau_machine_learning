@@ -1,0 +1,7 @@
+Pr,Bt,Ut
+?,pos,pos
+yes,neg,pos
+yes,pos,?
+yes,pos,neg
+?,neg,?
+
