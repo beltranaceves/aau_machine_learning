@@ -35,10 +35,53 @@ Manfred’s topics:
     * LDA is a generative probabilistic model, approximating the joint probability distribution of the classes
     * LDA is a specific case of Gaussian Mixture Model, in which all of the co-variance matrices are the same
     * LDA is different because it is *generative*. It models $P(Y)$ and $P(X∣Y)$, assuming each class has a Gaussian distribution. In LDA, all classes share the same covariance matrix, which leads to linear decision boundaries. The model estimates class priors, class means, and a shared covariance matrix from the data.
+    *
+        1. Estimate class priors  
+           Compute the prior probabilities:  
+           `P(Y = k)`  
+           as the proportion of training points in each class.
+        
+        2. Estimate class means  
+           For each class `k`, compute the mean vector `μ_k` using all data points belonging to that class.
+        
+        3. Estimate a shared covariance matrix  
+           Compute a single covariance matrix `Σ` using all data.
+        
+        4. Compute class-conditional densities  
+           Use Gaussian distributions:  
+           `P(X | Y = k)`  
+           with mean `μ_k` and shared covariance `Σ`.
+        
+        5. Compute posterior probabilities, Apply Bayes’ rule:  
+           `P(Y = k | X = x) = (P(Y = k) * P(X | Y = k)) / P(X)`
+        
+        6. Classify the input  
+           Assign `x` to the class with the highest posterior probability.
+
     <img width="905" height="456" alt="image" src="https://github.com/user-attachments/assets/548b8fce-cb84-4bdf-a5d5-c4a31d017495" />
 
 
-    * [Logistic Regression](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=15): Logistic regression is discriminative. It directly models $P(Y∣X)$. For binary classification, it uses the sigmoid function $P(Y=1∣x)=\sigma(w\cdot x)$. If this probability is at least 0.5, the point is classified as class 1. This again gives a linear decision boundary. Unlike least squares, logistic regression optimizes likelihood or cross-entropy, which is more appropriate for classification, but it requires iterative optimization.
+    * [Logistic Regression](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=15):
+    * Logistic regression is a discriminative classification model that directly models the conditional probability P(Y∣X) rather than the joint distribution. It assumes that the probability of a class is given by a sigmoid function applied to a linear combination of the input features, i.e. P(Y=1∣X=x)=σ(w⋅x). The model learns a linear decision boundary, where classification is based on whether this probability exceeds 0.5.
+    1. Define the model  
+       Assume `P(Y = 1 | X = x) = σ(w · x)`, where `σ` is the sigmoid function.
+    
+    2. Choose a likelihood function  
+       Use the likelihood of the observed labels given the inputs (based on Bernoulli probabilities).
+    
+    3. Maximize the log-likelihood  
+       Convert to log-likelihood and optimize it to find the best parameters `w`.
+    
+    4. Optimize parameters  
+       Solve using iterative numerical methods (e.g., gradient-based methods or Newton–Raphson).
+    
+    5. Compute probabilities for new inputs  
+       Plug new `x` into `σ(w · x)` to get class probabilities.
+    
+    6. Classify the input  
+       Assign class 1 if `σ(w · x) ≥ 0` (probability ≥ 0.5), otherwise class 0, giving a linear decision boundary.
+
+    * . Unlike least squares, logistic regression optimizes likelihood or cross-entropy, which is more appropriate for classification, but it requires iterative optimization.
     <img width="621" height="414" alt="image" src="https://github.com/user-attachments/assets/a43c1e6c-2540-490d-b415-b41e0311cc37" />
 
     
@@ -47,9 +90,15 @@ Manfred’s topics:
 
     * [Maximum margin hyperplanes](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=21): A maximum margin hyperplane separates classes while maximizing the distance to the nearest training points. This larger margin often improves the model’s ability to generalize to new data.
 
-    * [Feature transformations](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=2) and [kernel functions](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=2): Feature transformations map data into a new space where patterns may become easier to separate. Kernel functions allow this to be done implicitly, without computing the transformed coordinates directly.
-
+    * [Feature transformations](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=2) and [kernel functions](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=2): Feature transformations map the original input data into a new (ofter higher-dimensional) space allowing linear models to capture non-linear patterns.
+    * In this transformed feature space, a simple linear decision boundary can correspond to a complex, non-linear boundary in the original data. Kernel functions provide an efficient way to compute inner products ϕ(xi) ⋅ ϕ(xj) without explicitly performing the transformation, enabling algorithms like Support Vector Machines to operate in high-dimensional spaces implicitly and efficiently.
+    * This matters because SVM learning and classification only require dot products between data points. So, if we replace ordinary dot products x_i ⋅ x_j ​ with kernel values K(x_i,x_j), the model behaves as if it were working in a richer feature space, without ever explicitly constructing that space.
     * [The kernel trick](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=17): The kernel trick lets algorithms operate in a high-dimensional feature space by only evaluating pairwise kernel similarities. This makes nonlinear classification computationally feasible.
+    * The kernel trick is a shortcut used in algorithms like SVMs to handle non-linear classification efficiently. Instead of explicitly transforming data into a higher-dimensional feature space using `phi ϕ(x)`, we use a kernel function `K(xi,xj)` that behaves as if it directly computed the dot product in the transformed space.
+    * A caveat is that the kernel function must be positive semi-definite, which can be understood as one that approximates similarities that are consistent and do not produce impossible geometric relationships
+      <img width="780" height="357" alt="image" src="https://github.com/user-attachments/assets/dd24cd78-f25a-4d65-993d-b017e3556764" />
+
+
 
     * [String kernels](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=25): String kernels measure similarity between text or sequence data by comparing shared substrings or patterns. They are useful in domains such as text classification and bioinformatics where inputs are symbolic sequences.
 
