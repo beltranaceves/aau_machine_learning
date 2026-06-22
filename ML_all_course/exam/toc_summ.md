@@ -1,20 +1,35 @@
 Manfred’s topics:
 
-1. [Linear Models](./1-Manfred/1-Linear%20Models/)
+* [Linear Models](./1-Manfred/1-Linear%20Models/)
 
     Linear models are a family of classification and regression methods that assume the decision boundary is a linear (or affine) function of the input features. They are simple, interpretable, and often serve as a baseline for more complex approaches. The topic covers both discriminative models (least squares, logistic regression) and generative models (LDA), along with fundamental challenges like overfitting.
+   <img width="500" height="450" alt="image" src="https://github.com/user-attachments/assets/43ca09ea-9822-476a-9256-60abc4dfde5c" />
+
 
     * [Decision Regions](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=16): Decision regions describe how the input (or instance) space is divided into areas assigned to different classes by a classifier. In linear models, these regions are separated by straight lines or hyperplanes.
+      <img width="750" height="384" alt="image" src="https://github.com/user-attachments/assets/16f0ab99-186a-42a2-aea2-8011fe482e17" />
+
 
     * [Overfitting](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24): Overfitting happens when a model learns noise and details from the training data instead of the general pattern. As a result, it performs well on training data but poorly on unseen examples.
 
+    <img width="813" height="534" alt="image" src="https://github.com/user-attachments/assets/f04ac1be-98fb-42a4-9798-7fadb93321b2" />
+
+
     * [Least squares regression](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24) (corresponding to sklearn LinearRegression in self study 1): Least squares classification treats classification as regression. The class labels are one-hot encoded, and the model learns weights by minimizing the squared difference between predicted score vectors and target vectors. However, squared error is not the same as classification error, so least squares can be sensitive to outliers.
 
+    <img width="906" height="427" alt="image" src="https://github.com/user-attachments/assets/da24a585-588e-411f-b590-c36f32c610dc" />
+
+
     * [Linear discriminant analysis](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=13): LDA is different because it is *generative*. It models $P(Y)$ and $P(X∣Y)$, assuming each class has a Gaussian distribution. In LDA, all classes share the same covariance matrix, which leads to linear decision boundaries. The model estimates class priors, class means, and a shared covariance matrix from the data.
+    <img width="905" height="456" alt="image" src="https://github.com/user-attachments/assets/548b8fce-cb84-4bdf-a5d5-c4a31d017495" />
+
 
     * [Logistic Regression](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=15): Logistic regression is discriminative. It directly models $P(Y∣X)$. For binary classification, it uses the sigmoid function $P(Y=1∣x)=\sigma(w\cdot x)$. If this probability is at least 0.5, the point is classified as class 1. This again gives a linear decision boundary. Unlike least squares, logistic regression optimizes likelihood or cross-entropy, which is more appropriate for classification, but it requires iterative optimization.
+    <img width="621" height="414" alt="image" src="https://github.com/user-attachments/assets/a43c1e6c-2540-490d-b415-b41e0311cc37" />
 
-2. [Support Vector Machines](./1-Manfred/2-Support%20Vector%20Machines/)
+    
+
+3. [Support Vector Machines](./1-Manfred/2-Support%20Vector%20Machines/)
 
     * [Maximum margin hyperplanes](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=21): A maximum margin hyperplane separates classes while maximizing the distance to the nearest training points. This larger margin often improves the model’s ability to generalize to new data.
 
@@ -24,7 +39,7 @@ Manfred’s topics:
 
     * [String kernels](./1-Manfred/2-Support%20Vector%20Machines/ml-F26-03.pdf#page=25): String kernels measure similarity between text or sequence data by comparing shared substrings or patterns. They are useful in domains such as text classification and bioinformatics where inputs are symbolic sequences.
 
-3. [Graph kernels](./1-Manfred/3-Graph%20kernels/)
+4. [Graph kernels](./1-Manfred/3-Graph%20kernels/)
 
     * [Convolution kernels](./1-Manfred/3-Graph%20kernels/ml-F26-12.pdf#page=10): Convolution kernels compare structured objects by decomposing them into smaller parts and summing similarities across those parts. In graphs, this can mean comparing nodes, edges, paths, or substructures.
 
@@ -54,7 +69,7 @@ Thomas' topics:
 
     * [Bayesian learning](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=56): Bayesian learning treats model parameters as random variables and updates beliefs about them using observed data. This combines prior knowledge with evidence and naturally captures uncertainty.
 
-3. [Variational inference in probabilistic models](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/)
+3. [Variational inference in probabilistic models](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/) Probabilistic graphical models are a family of methods that use acyclic graph to represent probabilistic relationships between variables, where nodes denote variables and edges encode dependencies. This representation allows complex joint distributions to be expressed compactly and enables efficient inference by exploiting conditional independence.
 
     * [Variational inference basics](./2-Thomas/3-Variational%20inference%20in%20probabilistic%20models/ML-2026-4.pdf#page=6) (objective function, Evidence lower bound, mean field assumption): Variational inference approximates difficult posterior distributions with a simpler family of distributions. It does this by optimizing the ELBO, often under assumptions such as mean field independence between variables.
 
