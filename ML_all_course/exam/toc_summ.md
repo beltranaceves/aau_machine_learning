@@ -6,21 +6,35 @@ Manfred’s topics:
    <img width="500" height="450" alt="image" src="https://github.com/user-attachments/assets/43ca09ea-9822-476a-9256-60abc4dfde5c" />
 
 
-    * [Decision Regions](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=16): Decision regions describe how the input (or instance) space is divided into areas assigned to different classes by a classifier. In linear models, these regions are separated by straight lines or hyperplanes.
+    * [Decision Regions](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=16): Given that the instance/input space is the space of all poissible values for the input features, Decision regions describe how the instance space is divided into areas assigned to different classes by a classifier. In linear models, these regions are separated by straight lines or hyperplanes.
       <img width="750" height="384" alt="image" src="https://github.com/user-attachments/assets/16f0ab99-186a-42a2-aea2-8011fe482e17" />
 
 
-    * [Overfitting](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24): Overfitting happens when a model learns noise and details from the training data instead of the general pattern. As a result, it performs well on training data but poorly on unseen examples.
+    * [Overfitting](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24):A situation a model can be in, in which there exists an alternative state for the model in which the train error is higher, but the test/validation error is lower.
+    * Knn classifier is the perfect example of this, in which k=1, the train error will be zero, but the test/validation error will not.
+    * Overfitting happens when a model learns noise and details from the training data instead of the general pattern. As a result, it performs well on training data but poorly on unseen examples.
+    * It relates to the bias/variance tradeoff, where bias is the inherent error a model has with respect to a given set of data, and variance is how many different representations that modeling method can generate depending on different subsets of that dataset
 
     <img width="813" height="534" alt="image" src="https://github.com/user-attachments/assets/f04ac1be-98fb-42a4-9798-7fadb93321b2" />
 
 
-    * [Least squares regression](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24) (corresponding to sklearn LinearRegression in self study 1): Least squares classification treats classification as regression. The class labels are one-hot encoded, and the model learns weights by minimizing the squared difference between predicted score vectors and target vectors. However, squared error is not the same as classification error, so least squares can be sensitive to outliers.
+    * [Least squares regression](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=24) (corresponding to sklearn LinearRegression in self study 1) Least Squares Regression is a linear modeling technique that tries to fit a decision boundary to a dataset by minimising the sum of squared errors
+    * The dataset must be linearly separable, and be numerically encoded using one-hot encoding
+    * SSE does not directly measure classification error, only the distance to the boundary. What it does is measure the quadratic error between a given data point and a on-hot encoded target vector
+    * Very sensitive to outliers, due to the quadratic error term
+    * In multi-class classification, some decision regions can become very small or are simply ignored. This is called masking.
+    * The minimisation problem can be transformed from an open-form expression to a closed-formed one
+    * Least squares classification treats classification as regression. The class labels are one-hot encoded, and the model learns weights by minimizing the squared difference between predicted score vectors and target vectors. However, squared error is not the same as classification error, so least squares can be sensitive to outliers.
 
     <img width="906" height="427" alt="image" src="https://github.com/user-attachments/assets/da24a585-588e-411f-b590-c36f32c610dc" />
+    <img width="1507" height="708" alt="image" src="https://github.com/user-attachments/assets/95d6d80e-e88d-43ef-ad6b-bff6578e0984" />
+    <img width="1047" height="271" alt="image" src="https://github.com/user-attachments/assets/7241786b-b069-44de-83a2-652884fb33fd" />
 
 
-    * [Linear discriminant analysis](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=13): LDA is different because it is *generative*. It models $P(Y)$ and $P(X∣Y)$, assuming each class has a Gaussian distribution. In LDA, all classes share the same covariance matrix, which leads to linear decision boundaries. The model estimates class priors, class means, and a shared covariance matrix from the data.
+    * [Linear discriminant analysis](./1-Manfred/1-Linear%20Models/ml-F26-02.pdf#page=13):
+    * LDA is a generative probabilistic model, approximating the joint probability distribution of the classes
+    * LDA is a specific case of Gaussian Mixture Model, in which all of the co-variance matrices are the same
+    * LDA is different because it is *generative*. It models $P(Y)$ and $P(X∣Y)$, assuming each class has a Gaussian distribution. In LDA, all classes share the same covariance matrix, which leads to linear decision boundaries. The model estimates class priors, class means, and a shared covariance matrix from the data.
     <img width="905" height="456" alt="image" src="https://github.com/user-attachments/assets/548b8fce-cb84-4bdf-a5d5-c4a31d017495" />
 
 
