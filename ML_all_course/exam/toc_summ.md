@@ -4,6 +4,7 @@ Notes on the exam:
 - Show implementations, how you would implement it, or be able to discuss hypotheticals
 - Slides/Notebooks over this kind of notes
 - The original idea of having a very simple exercise for a given method, with accompanying images and theory bullet-points is probably the best.
+- Make sure to prepare a script/narrative for each of the topics using the new resources
 
   
 Manfred’s topics:
