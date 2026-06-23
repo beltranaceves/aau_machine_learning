@@ -116,6 +116,11 @@ Manfred’s topics:
     * [Random walk kernels](./1-Manfred/3-Graph%20kernels/ml-F26-12.pdf#page=36): Random walk kernels compare graphs by counting matching walks in both graphs. They capture structural similarity through sequences of connected nodes, although they can be computationally expensive.
 
     * [Weisfeiler Lehman kernel](./1-Manfred/3-Graph%20kernels/ml-F26-12.pdf#page=36): The Weisfeiler-Lehman kernel compares graphs by iteratively relabeling nodes based on the labels of their neighbors. This captures increasingly rich neighborhood structure and makes graph comparison efficient and powerful.
+    * Step 1: Initialize – Assign initial labels to all nodes (using a baseline value or node attributes).
+    * Step 2: Aggregate – Collect each node's neighbor labels, sort them, and combine them with the node's own label into a string.
+    * Step 3: Compress – Hash each unique string into a new, compact label. Identical structures get identical labels.
+    * Step 4: Iterate – Repeat the process for $h$ steps so each node label captures an $h$-hop structural subtree.
+    * Step 5: Score – Build feature vectors counting all label frequencies across iterations, then take their dot product to measure similarity.
 
 Thomas' topics:
 
@@ -192,7 +197,7 @@ Peter's topics:
 3. [Node and Graph Classification with shallow node embeddings and GNNs](./3-Peter/4-Node%20and%20Graph%20Classification/)
 
     * [Iterative Classification](./3-Peter/4-Node%20and%20Graph%20Classification/L11_node_and_graph_classification.pdf#page=37) (explaining on selected GNN or Node Embedding Method): Iterative classification exploits **homophily** (similar nodes tend to be connected) and **co-citation** (similar nodes link to the same things). It works in rounds:
-        1. Train a base classifier on labeled nodes using their features.
+        1. Train a classifier on labeled nodes using their features.
         2. For each unlabeled node, aggregate features/labels from its neighbors (e.g., count of neighbor labels per class, or mean of neighbor feature vectors).
         3. Update predictions using both the node's own features AND the aggregated neighborhood information.
         4. Repeat until convergence — each iteration uses the latest predicted labels as input for the next round.
