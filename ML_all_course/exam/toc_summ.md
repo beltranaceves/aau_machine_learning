@@ -158,7 +158,7 @@ Probabilistic graphical models are a family of methods that use acyclic graph to
 
 Peter's topics:
 
-1. [Link prediction with node embeddings](./3-Peter/2-Link%20Prediction%20with%20Node%20Embedding%20Models/)
+1. [Link prediction with node embeddings](./3-Peter/2-Link%20Prediction%20with%20Node%20Embedding%20Models/) Link prediction is the task of predicting missing or future edges in a graph, and It is based on the notion that **nodes which are similar should be connected**
 
     * [Encoder/Decoder View](./3-Peter/2-Link%20Prediction%20with%20Node%20Embedding%20Models/L9_linkprediction_withnodeembeddings.pdf#page=7): The encoder/decoder framework separates representation learning from prediction. The **encoder** `ENC(v) = Z[v]` maps each node to a low-dimensional embedding vector `z_v` in `R^d`. The **decoder** `DEC(z_u, z_v)` takes two embeddings and scores how likely a link exists between them — usually using a dot product `DEC(z_u, z_v) = z_u^T z_v` (cosine similarity). The **loss function** measures how well the decoded scores reconstruct the true adjacency, typically: `L = sum_{(u,v) in D} ||DEC(z_u, z_v) - S[u,v]||^2_2` where `S[u,v]` is the true similarity (e.g., 1 if edge exists, 0 otherwise). Minimizing this reconstruction loss forces embeddings to capture graph structure.
 
@@ -166,7 +166,7 @@ Peter's topics:
 
     * [Random Walk Based Methods](./3-Peter/2-Link%20Prediction%20with%20Node%20Embedding%20Models/L9_linkprediction_withnodeembeddings.pdf#page=42): Instead of using the adjacency matrix directly, random walk methods model the probability that two nodes co-occur on short random walks: `z_u^T z_v ∝ P_R(v|u)` (the probability of reaching `v` from `u` via a random walk). The loss uses **negative sampling** to avoid expensive computation over all node pairs: `L = sum_{(u,v) in D} -log(sigma(z_u^T z_v)) - gamma * sum_{i=1}^k log(sigma(-z_u^T z_k))`. Here `k` negative samples `z_k` are drawn from a noise distribution, and `sigma` is the sigmoid function. This makes training scalable even for large graphs.
 
-2. [Graph Neural Networks](./3-Peter/3-Linkprediction%20with%20GNN/)
+2. [Graph Neural Networks](./3-Peter/3-Linkprediction%20with%20GNN/) Graph Neural Networks (GNNs) are neural network models that operate directly on graph data. They overcome the limitations of shallow node embeddings by using **shared parameters across nodes** and incorporating **node features** into the encoding process. This makes GNNs more expressive and able to generalize to unseen nodes.
 
     * [Message Passing Networks](./3-Peter/3-Linkprediction%20with%20GNN/L10_linkprediction_withGNN.pdf#page=33): GNNs replace shallow embedding lookups with neural encoders that use **both graph structure and node features**. The basic message passing layer: `h_u^{(k+1)} = sigma(W_self * h_u^{(k)} + W_neigh * sum_{v in N(u)} h_v^{(k)} + b)`. Each node updates its representation by combining its own previous state (`h_u`) with an **aggregated message** from neighbors (e.g., sum of neighbor features), followed by a linear transformation and non-linearity `sigma` (ReLU/tanh). After `K` layers, node embeddings contain information from the `K`-hop neighborhood. This overcomes shallow embedding problems: shared parameters across nodes, support for node features, and ability to generalize to unseen nodes.
 
