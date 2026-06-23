@@ -137,8 +137,20 @@ Probabilistic graphical models are a family of methods that use acyclic graph to
     * [Maximum likelihood estimation](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=20): Maximum likelihood learning (MLE) estimates model parameters by choosing the values that make the observed data most probable: `θ̂_MLE = argmax_θ log p(D | θ)`. The **likelihood function** `L(θ) = P(D | θ)` measures how probable the observed data is given the parameters. The **log-likelihood** is used instead (products become sums, numerically more stable). For complete data with simple multinomial models, the MLE reduces to counting observed frequencies. In Gaussian models, MLE yields the sample mean and (biased) sample variance.
 
     * [The EM algorithm](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=43): The Expectation-Maximization algorithm handles maximum likelihood learning when data contains **hidden or missing variables**, making direct likelihood optimization intractable. It iterates two steps until convergence:
-        - **E-step (Expectation):** Compute expected sufficient statistics — for each variable `X_i`, calculate the table of expected counts given current parameters: `E[N(X_i, pa(X_i) | D)] = Σ_{d in D} P(X_i, pa(X_i) | d, θ^t)`
-        - **M-step (Maximization):** Update parameters using the expected counts as if they were actual counts: `θ̂^{t+1}_{ijk} = E[N(X_i = k, pa(X_i) = j | D)] / Σ_k E[N(X_i = k, pa(X_i) = j | D)]`
+
+        - **E-step (Expectation):** Compute the **expected sufficient statistics** given current parameters `θ^t`. For each variable `X_i`, compute the expected count table by averaging over the posterior of the hidden variables:
+
+          `E[N(X_i, pa(X_i) | D)] = Σ_{d in D} P(X_i, pa(X_i) | d, θ^t)`
+
+          This is a **soft completion** — each missing value is fractionally assigned to all possible states weighted by their posterior probability (e.g., `P(Pr=yes | evidence) = 0.7`, `P(Pr=no | evidence) = 0.3`), rather than a single hard assignment.
+
+        - **M-step (Maximization):** Update parameters using the expected counts as if they were observed counts (standard MLE, but with fractional counts):
+
+          `θ̂^{t+1}_{ijk} = E[N(X_i = k, pa(X_i) = j | D)] / Σ_k E[N(X_i = k, pa(X_i) = j | D)]`
+
+          This re-estimates each conditional probability table entry as: expected count of `(state, parent_config)` divided by expected count of `parent_config` across all states.
+
+        Each iteration is guaranteed to **increase** (or not decrease) the observed-data log-likelihood, converging to a local optimum.
 
     * [Bayesian learning](./2-Thomas/2-Probabilistic%20graphical%20models/ML-2026-2.pdf#page=56): Bayesian learning treats model parameters as **random variables** and computes a posterior distribution over them using Bayes' rule: `p(θ | D) = p(θ) p(D | θ) / p(D)`. The **prior** `p(θ)` encodes beliefs before seeing data, the **likelihood** `p(D | θ)` measures how well the data supports each parameter value, and the **posterior** `p(θ | D)` is the updated belief after observing data.
         - **MLE vs MAP vs Bayesian:** MLE picks the single best `θ` maximizing likelihood; MAP adds a prior (`argmax log p(D|θ) + log p(θ)`); full Bayesian keeps the entire posterior distribution.
