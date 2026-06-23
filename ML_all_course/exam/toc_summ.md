@@ -1,3 +1,11 @@
+Notes on the exam:
+- Make sure to illustrate the ideas with examples. A simple worked example would be the best
+- Make sure to showcase connections between the topics
+- Show implementations, how you would implement it, or be able to discuss hypotheticals
+- Slides/Notebooks over this kind of notes
+- The original idea of having a very simple exercise for a given method, with accompanying images and theory bullet-points is probably the best.
+
+  
 Manfred’s topics:
 
 * [Linear Models](./1-Manfred/1-Linear%20Models/)
@@ -6,7 +14,7 @@ Manfred’s topics:
    <img width="500" height="450" alt="image" src="https://github.com/user-attachments/assets/43ca09ea-9822-476a-9256-60abc4dfde5c" />
 
 
-    * [Decision Regions](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=16): Given that the instance/input space is the space of all poissible values for the input features, Decision regions describe how the instance space is divided into areas assigned to different classes by a classifier. In linear models, these regions are separated by straight lines or hyperplanes.
+    * [Decision Regions](./1-Manfred/1-Linear%20Models/ml-F26-01.pdf#page=16): Given that the instance/input space is the space of all possible values for the input features, Decision regions describe how the instance space is divided into areas assigned to different classes by a classifier. In linear models, these regions are separated by straight lines or hyperplanes.
       <img width="750" height="384" alt="image" src="https://github.com/user-attachments/assets/16f0ab99-186a-42a2-aea2-8011fe482e17" />
 
 
